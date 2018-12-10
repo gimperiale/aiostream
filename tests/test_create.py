@@ -31,7 +31,7 @@ async def test_empty(assert_run):
 @pytest.mark.asyncio
 async def test_never(assert_run, event_loop):
     xs = stream.never() | pipe.timeout(30.)
-    await assert_run(xs, [], asyncio.TimeoutError())
+    await assert_run(xs, [], TimeoutError())
     assert event_loop.steps == [30.]
 
 

@@ -20,5 +20,5 @@ async def test_timeout(assert_run, event_loop):
     with event_loop.assert_cleanup():
         xs = stream.range(3) + stream.never()
         ys = xs | pipe.timeout(1)
-        await assert_run(ys, [0, 1, 2], asyncio.TimeoutError())
+        await assert_run(ys, [0, 1, 2], TimeoutError())
         assert event_loop.steps == [1]
